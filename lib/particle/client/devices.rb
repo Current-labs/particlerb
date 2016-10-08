@@ -74,7 +74,11 @@ module Particle
       # @return [Integer] Return value from the firmware function
       def call_function(target, name, argument = "")
         result = post(device(target).function_path(name), arg: argument)
-        result[:return_value]
+        if result.respond_to?(:each_key)
+          result[:return_value]
+        else
+          result
+        end
       end
 
       # Get the value of a variable in the firmware of a Particle device
@@ -109,8 +113,8 @@ module Particle
       # @return [boolean] true on success
       def change_device_product(target, product_id, should_update = false)
         params = {
-          product_id: product_id,
-          update_after_claim: should_update
+            product_id:         product_id,
+            update_after_claim: should_update
         }
         result = put(device(target).path, params)
         if result[:error] == "Nothing to do?"
