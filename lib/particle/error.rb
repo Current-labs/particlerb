@@ -45,10 +45,16 @@ module Particle
     def build_error_message
       return nil if @response.nil?
 
-      message =  "#{@response[:method].to_s.upcase} "
-      message << redact_url(@response[:url].to_s) + ": "
-      message << "#{@response[:status]} - "
-      message << "#{@response[:body]}"
+      if @response.respond_to?(:backtrace)
+        message = @response.message
+      elsif @response.respond_to?(:each_key)
+        message =  "#{@response[:method].to_s.upcase} "
+        message << redact_url(@response[:url].to_s) + ": "
+        message << "#{@response[:status]} - "
+        message << "#{@response[:body]}"
+      else
+        message = @response.to_s
+      end
       message
     end
 
