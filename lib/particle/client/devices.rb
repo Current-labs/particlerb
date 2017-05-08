@@ -20,6 +20,17 @@ module Particle
         end
       end
 
+      # Create a domain model for a Particle device under a Product
+      #
+      # @param product_slug [String] The product slug to use when calling Particle
+      # @param target [String, Hash] A device id, name, or hash of attributes
+      # @return [Device] A device object to interact with
+      def product_device(product_slug, target)
+        device = Device.new(self, target)
+        device.product_slug = product_slug
+        device
+      end
+
       # List all Particle devices on the account
       #
       # @return [Array<Device>] List of Particle devices to interact with

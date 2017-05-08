@@ -43,6 +43,8 @@ module Particle
     attribute_reader :connected, :product_id, :last_heard, :last_app,
       :last_ip_address
 
+    attr_accessor :product_slug
+
     alias_method :connected?, :connected
 
     def functions
@@ -170,7 +172,9 @@ module Particle
     end
 
     def base_path
-      if @client.organization.nil?
+      if !self.product_slug.nil?
+        "/v1/products/#{self.product_slug}/devices"
+      elsif @client.organization.nil?
         "/v1/devices"
       else
         "/v1/orgs/#{@client.organization}/devices"
