@@ -32,8 +32,8 @@ module Particle
         ENV['PARTICLE_CLIENT_SECRET']
       end
 
-      def organization
-        ENV['PARTICLE_ORGANIZATION']
+      def temp_product
+        ENV['PARTICLE_TEMP_PRODUCT']
       end
 
       # Default options for Faraday::Connection

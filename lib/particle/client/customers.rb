@@ -4,9 +4,9 @@ require 'uri'
 module Particle
   class Client
 
-    # Client methods for the Particle Organization Customer API
+    # Client methods for the Particle Product Customer API
     #
-    # @see https://docs.particle.io/reference/api/#create-a-customer---client-credentials
+    # @see https://docs.particle.io/reference/device-cloud/api/#create-a-customer---client-credentials
     module Customers
 
       # Create a domain model for a Particle customer

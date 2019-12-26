@@ -174,10 +174,10 @@ module Particle
     def base_path
       if !self.product_slug.nil?
         "/v1/products/#{self.product_slug}/devices"
-      elsif @client.organization.nil?
+      elsif @client.temp_product.nil?
         "/v1/devices"
       else
-        "/v1/orgs/#{@client.organization}/devices"
+        "/v1/products/#{@client.temp_product}/devices"
       end
     end
 

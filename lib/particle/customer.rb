@@ -19,7 +19,7 @@ module Particle
     end
 
     def base_path
-      "/v1/orgs/#{@client.organization}/customers"
+      "/v1/products/#{@client.temp_product}/customers"
     end
   end
 end

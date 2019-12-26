@@ -24,3 +24,5 @@ tmtags
 .test_queue_stats
 Session.vim
 .env
+.idea
+.ruby-*
